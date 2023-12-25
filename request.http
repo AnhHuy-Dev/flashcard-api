@@ -1,0 +1,41 @@
+GET http://localhost:3000/api/word?page=0
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "anhhuy",
+    "password": "1234"
+}
+
+###
+POST http://localhost:3000/api/word
+Content-Type: application/json
+
+{
+    "name": "my second post",
+    "script": "new post of me",
+    "note": "google.com",
+    "type": "ADV"
+}
+
+###
+GET http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY0ZjRkYjk1NTlhYmQxMmFjODQ2YzAiLCJpYXQiOjE2ODQ1MTA5MDB9.LN3PzPPPuN-Kq9E067wT1RRiD5wqT6L-ChDrLWiD6Ik
+
+###
+PUT http://localhost:3000/api/word/65892cf64619a1905d217806
+Content-Type: application/json
+
+{
+    "name": "my second post111",
+    "script": "new post of me",
+    "note": "google.com",
+    "type": "ADV"
+}
+
+###
+DELETE http://localhost:3000/api/word/65892cf64619a1905d217806
