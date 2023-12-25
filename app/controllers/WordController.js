@@ -29,21 +29,22 @@ class WordController {
 		const page = Math.max(0, req.query.page);
 		const type = req.query.type || "ALL";
 		let posts;
-		let total;
 		try {
+			let total = 1;
 			if (type == "ALL") {
 				posts = await Word.find({})
 					.limit(perPage)
 					.skip(perPage * page)
 					.sort({ createAt: -1 });
-				total = await Word.find({}).length;
+				total = await (await Word.find({})).length;
 			} else {
 				posts = await Word.find({ type: type })
 					.limit(perPage)
 					.skip(perPage * page)
 					.sort({ createAt: -1 });
-				total = await Word.find({ type: type }).length;
+				total = await (await Word.find({ type: type })).length;
 			}
+			console.log(total);
 			res.json({ posts: posts, total: total });
 		} catch (error) {
 			console.log(error);
