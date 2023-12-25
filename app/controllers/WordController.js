@@ -32,8 +32,7 @@ class WordController {
 				.limit(perPage)
 				.skip(perPage * page)
 				.sort({ createAt: -1 });
-			const total = await (await Word.find({})).length;
-			res.json({ posts: posts, total: total });
+			res.json(posts);
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ success: false, message: "Server error" });
