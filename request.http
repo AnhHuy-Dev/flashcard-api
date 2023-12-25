@@ -1,4 +1,4 @@
-GET http://localhost:4000/api/word?page=0
+GET http://localhost:4000/api/word?page=0&type=ADV
 Content-Type: application/json
 
 

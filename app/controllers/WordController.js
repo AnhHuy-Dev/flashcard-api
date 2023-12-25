@@ -41,7 +41,7 @@ class WordController {
 					.skip(perPage * page)
 					.sort({ createAt: -1 });
 			}
-			res.json(posts);
+			res.json({ posts: posts, total: posts.length });
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ success: false, message: "Server error" });
