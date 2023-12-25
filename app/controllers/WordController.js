@@ -27,11 +27,20 @@ class WordController {
 	//GET /api/posts
 	async store(req, res, next) {
 		const page = Math.max(0, req.query.page);
+		const type = req.query.type || "ALL";
+		let posts;
 		try {
-			const posts = await Word.find({})
-				.limit(perPage)
-				.skip(perPage * page)
-				.sort({ createAt: -1 });
+			if (type == "ALL") {
+				posts = await Word.find({})
+					.limit(perPage)
+					.skip(perPage * page)
+					.sort({ createAt: -1 });
+			} else {
+				posts = await Word.find({ type: type })
+					.limit(perPage)
+					.skip(perPage * page)
+					.sort({ createAt: -1 });
+			}
 			res.json(posts);
 		} catch (error) {
 			console.log(error);
